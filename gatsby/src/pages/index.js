@@ -8,19 +8,22 @@ import HomeCarousel from "../components/HomeCarousel";
 
 export default function Index() {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Gatsby v4-beta example
-        </Typography>
-        <Box position="relative" overflow="hidden" height="500px">
-          <HomeCarousel />
-        </Box>
-        <Link to="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
+    <>
+      <Box overflow="hidden">
+        <HomeCarousel />
       </Box>
-    </Container>
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Gatsby v4-beta example
+          </Typography>
+
+          <Link to="/about" color="secondary">
+            Go to the about page
+          </Link>
+          <ProTip />
+        </Box>
+      </Container>
+    </>
   );
 }

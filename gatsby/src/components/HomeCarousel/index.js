@@ -5,16 +5,17 @@ import makeCarousel from "react-reveal/makeCarousel";
 import Slide from "react-reveal/Slide";
 import { withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
+import styled from "styled-components";
 
-const Container = withStyles({
-  position: "relative",
-  overflow: "hidden",
-  width: "300px",
-  height: "150px"
-})(Box);
+const Container = styled.div`
+  position: "relative";
+  overflow: "hidden";
+  width: "300px";
+  height: "150px";
+`;
 
-// const CarouselUI = ({ children }) => <Container>{children}</Container>;
-const Carousel = makeCarousel(Container);
+const CarouselUI = ({ children }) => <Container>{children}</Container>;
+const Carousel = makeCarousel(CarouselUI);
 
 const { allFile } = graphql`
   query {
@@ -38,35 +39,23 @@ const { allFile } = graphql`
 `;
 
 const Example = props => {
-  const [index, setIndex] = useState(0);
-  const slides = useStaticQuery(allFile);
-  const slides2 = slides.edges[0].node[0].id;
-  console.log(slides2, "scsscsc");
+  // const [index, setIndex] = useState(0);
+  // const slides = useStaticQuery(allFile);
+  // const slides2 = slides.edges[0].node[0].id;
 
   return (
-    <Carousel>
-      {/* {allFile.map((item, index) => {
-        return ( */}
-      <Slide right>
-        {/* <Img fluid={slides.childImageSharp.fluid} key={index} /> */}
-        ce pula mea???
-      </Slide>
-      {/* );
-      })} */}
-
-      {/* <Slide up>
-        <div>
-          <h1>Slide1</h1>
-          <p>description</p>
-        </div>
-      </Slide>
-      <Slide up>
-        <div>
-          <h1>Slide2</h1>
-          <p>description</p>
-        </div>
-      </Slide> */}
-    </Carousel>
+    <>
+      <Carousel>
+        <Slide right>
+          <Box height="100vh">Ccccc</Box>
+        </Slide>
+        <Slide right>
+          <Box bgcolor="primary.main" height="100vh">
+            Slide 2
+          </Box>
+        </Slide>
+      </Carousel>
+    </>
   );
 };
 

@@ -15,7 +15,8 @@
     "react-dom": "latest",
     "react-helmet": "latest",
     "react-material-ui-carousel": "^1.1.1",
-    "react-reveal": "^1.2.2"
+    "react-reveal": "^1.2.2",
+    "styled-components": "^5.0.0"
   },
   "scripts": {
     "develop": "gatsby develop",
