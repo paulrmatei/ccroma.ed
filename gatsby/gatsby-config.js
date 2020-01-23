@@ -2,9 +2,9 @@ const path = require(`path`);
 
 module.exports = {
   plugins: [
-    "gatsby-plugin-top-layout",
+    'gatsby-plugin-top-layout',
     {
-      resolve: "gatsby-plugin-material-ui",
+      resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
       options: {
         // stylesProvider: {
@@ -14,7 +14,7 @@ module.exports = {
     },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,6 +26,6 @@ module.exports = {
     `gatsby-transformer-sharp`
   ],
   siteMetadata: {
-    title: "ccroma.ed"
+    title: 'ccroma.ed'
   }
 };
