@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: '50vh'
     }
+  },
+  slider2: {
+    overflow: 'hidden'
   }
 }));
 
@@ -49,7 +52,8 @@ const allFile = graphql`
 const sliderContent = [
   { title: 'WELCOME TO CCROMA.ED', description: 'Best saloon in Bucharest' },
   { title: 'CCROMA.ED', description: 'Best  in Bucharest' },
-  { title: 'WELCOME ', description: 'Bucharest' }
+  { title: 'WELCOME ', description: 'Bucharest' },
+  { title: 'WELCOME 222222', description: 'Bucharest' }
 ];
 
 const MySlider = ({ classes, images }) => {
@@ -73,30 +77,25 @@ const Example = props => {
   const data = useStaticQuery(allFile);
   const images = data.allFile.nodes;
   const classes = useStyles();
+  console.log(sliderContent);
 
   return (
-    <>
-      <Carousel>
-        {images.map((item, index) => {
-          console.log(index);
-          return (
-            <Slide right key={item.id}>
-              <BackgroundImage
-                Tag='div'
-                fluid={item.childImageSharp.fluid}
-                className={classes.slider}
-              >
-                {sliderContent.map((item, index) => {
-                  // console.log(item[0]);
-                  return <p key={index}>{item.title}</p>;
-                })}
-              </BackgroundImage>
-            </Slide>
-          );
-        })}
-        {/* <MySlider images={images} classes={classes} /> */}
-      </Carousel>
-    </>
+    <Carousel>
+      {images.map((item, index) => {
+        return (
+          <Slide right key={item.id} className={classes.slider2}>
+            <BackgroundImage
+              Tag='div'
+              fluid={item.childImageSharp.fluid}
+              className={classes.slider}
+            >
+              <h1>{sliderContent[index].title}</h1>
+              <p>{sliderContent[index].description}</p>
+            </BackgroundImage>
+          </Slide>
+        );
+      })}
+    </Carousel>
   );
 };
 

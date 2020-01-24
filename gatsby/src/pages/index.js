@@ -9,7 +9,9 @@ import HomeCarousel from '../components/HomeCarousel';
 export default function Index() {
   return (
     <>
-      <HomeCarousel />
+      <Box component='div' position='relative'>
+        <HomeCarousel />
+      </Box>
       <Container maxWidth='sm'>
         <Box my={4}>
           <Typography variant='h4' component='h1' gutterBottom>
