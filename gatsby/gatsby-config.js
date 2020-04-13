@@ -10,7 +10,7 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
-      }
+      },
     },
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
@@ -19,13 +19,15 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: path.join(__dirname, `src`, `images`)
-      }
+        path: path.join(__dirname, `src`, `images`),
+      },
     },
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify-cms`,
   ],
+
   siteMetadata: {
-    title: 'ccroma.ed'
-  }
+    title: 'ccroma.ed',
+  },
 };
