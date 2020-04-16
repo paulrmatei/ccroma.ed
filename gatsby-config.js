@@ -33,7 +33,14 @@ module.exports = {
     'gatsby-transformer-sharp',
     // Material UI ********************
     `gatsby-theme-material-ui`,
-    `gatsby-plugin-material-ui`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
