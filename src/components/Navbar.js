@@ -1,102 +1,50 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import github from '../img/github-icon.svg';
-import logo from '../img/logo.svg';
-import Button from '@material-ui/core/Button';
+import { createStyles, makeStyles, withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from './NavDrawer';
+import NavButton from './Buttons/NavButton';
+import links from '../Constants/links';
 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    };
-  }
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    title: {
+      flexGrow: 1,
+      fontSize: '13pt',
+      fontWeight: 600,
+      fontFamily: 'sans-serif',
+    },
+  })
+);
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            });
-      }
-    );
-  };
+export default function Navbar() {
+  const classes = useStyles();
 
-  render() {
-    return (
-      <nav
-        className='navbar is-transparent'
-        role='navigation'
-        aria-label='main-navigation'
-      >
-        <div className='container'>
-          <div className='navbar-brand'>
-            <Link to='/' className='navbar-item' title='Logo'>
-              <img src={logo} alt='Kaldi' style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target='navMenu'
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id='navMenu'
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className='navbar-start has-text-centered'>
-              <Link className='navbar-item' to='/about'>
-                About
-              </Link>
-              <Link className='navbar-item' to='/products'>
-                Products
-              </Link>
-              <Link className='navbar-item' to='/blog'>
-                Blog
-              </Link>
-              <Link className='navbar-item' to='/contact'>
-                Contact
-              </Link>
-              <Link className='navbar-item' to='/contact/examples'>
-                Form Examples
-              </Link>
-              <Button variant='contained' color='primary'>
-                Button
-              </Button>
-            </div>
-            <div className='navbar-end has-text-centered'>
-              <a
-                className='navbar-item'
-                href='https://github.com/netlify-templates/gatsby-starter-netlify-cms'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <span className='icon'>
-                  <img src={github} alt='Github' />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-};
-
-export default Navbar;
+  return (
+    <AppBar position='sticky' color='default'>
+      <Container maxWidth='xl'>
+        <Toolbar disableGutters>
+          <Typography className={classes.title}>CCROMA.ED</Typography>
+          <Hidden xsDown>
+            {links.map((item, index) => {
+              return (
+                <NavButton path={item.path} key={index}>
+                  {item.text}
+                </NavButton>
+              );
+            })}
+          </Hidden>
+          <Hidden smUp>
+            <Drawer />
+          </Hidden>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
