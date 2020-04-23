@@ -1,11 +1,8 @@
 import React from 'react';
 import BackgroundImage from 'gatsby-background-image';
 import { makeStyles, createStyles } from '@material-ui//core/styles';
-// import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
-const navbarHeight = 74.06;
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -18,7 +15,6 @@ const useStyles = makeStyles((theme) =>
     },
     textContainer: {
       color: theme.palette.common.white,
-      marginLeft: '10%',
     },
   })
 );
@@ -32,14 +28,14 @@ const Hero = ({ image, heading, subheading }) => {
       fluid={image}
       className={classes.backgroundImg}
     >
-      <Box className={classes.textContainer} color='textPrimary'>
+      <Container maxWidth='lg' className={classes.textContainer}>
         <Typography variant='h3' component='h1'>
           {heading}
         </Typography>
         <Typography variant='h6' component='p'>
           {subheading}
         </Typography>
-      </Box>
+      </Container>
     </BackgroundImage>
   );
 };
